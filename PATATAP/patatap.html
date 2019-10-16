@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>papatap</title>
+	<meta charset="utf-8">
+<script type="text/javascript" src="js/paper-full.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.core.min.js"></script>
+<link rel="stylesheet" type="text/css" href="ccs/patatap.css">
+</head>
+<body>
+
+
+	<script type="text/paperscript" canvas="myCanvas">
+		console.log("entered the script");
+		var sound=[26];
+
+
+for(var q=1;q<=26;q++)
+{
+sound[q-1] = new Howl({
+  src: ['A/s ('+q+').mp3']
+});
+}
+
+
+var data={
+	a: {
+	color:"orange",
+	music:sound[0]
+},
+b: {
+	color:"green",
+	music:sound[1]
+},
+c: {
+	color:"blue",
+	music:sound[2]
+},
+d: {
+	color:"hotpink",
+	music:sound[3]
+},
+e: {
+	color:"#e30909",
+	music:sound[4]
+},
+f: {
+	color:"#e36709",
+	music:sound[5]
+},
+g: {
+	color:"#09e3df",
+	music:sound[6]
+},
+h: {
+	color:"#06cf0d",
+	music:sound[7]
+},
+i: {
+	color:"#d92109",
+	music:sound[8]
+},
+j: {
+	color:"#d7e051",
+	music:sound[9]
+},
+k: {
+	color:"#c91ac7",
+	music:sound[10]
+},
+l: {
+	color:"#e33460",
+	music:sound[11]
+},
+m: {
+	color:"brown",
+	music:sound[12]
+},
+n: {
+	color:"yellow",
+	music:sound[13]
+},
+o: {
+	color:"white",
+	music:sound[14]
+},
+p: {
+	color:"#eb839d",
+	music:sound[15]
+},
+q: {
+	color:"silver",
+	music:sound[16]
+},
+r: {
+	color:"steelblue",
+	music:sound[17]
+},
+s: {
+	color:"#e6c5ed",
+	music:sound[18]
+},
+t: {
+	color:"#c31ce8",
+	music:sound[19]
+},
+u: {
+	color:"#3119e3",
+	music:sound[20]
+},
+v: {
+	color:"#898f96",
+	music:sound[21]
+},
+w: {
+	color:"#4c635c",
+	music:sound[22]
+},
+x: {
+	color:"#34ebb1",
+	music:sound[23]
+},
+y: {
+	color:"#eb4034",
+	music:sound[24]
+},
+z: {
+	color:"#242424",
+	music:sound[25]
+}
+}
+
+
+var circles=[];
+var j=0;
+
+function onKeyDown(event) {
+var b=Math.random()*view.size.height;
+var a=Math.random()*view.size.width;
+circles[j]=new Path.Circle(new Point(a, b), 400);
+circles[j].fillColor=data[event.key].color;
+data[event.key].music.play();
+++j;
+}
+
+
+function onFrame(event)
+{
+	for(var i=0;i<j;i++)
+	{
+	circles[i].scale(.9);
+	circles[i].fillColor.hue+=3;
+	
+				console.log(j);
+}
+}
+
+
+</script>
+<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
